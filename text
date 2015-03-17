@@ -1,0 +1,32 @@
+void display(void)
+{
+/* borra la pantalla */
+glClear (GL_COLOR_BUFFER_BIT);
+/* seleccionamos la matriz modelo/vista */
+glMatrixMode(GL_MODELVIEW);
+/* color */
+glColor3f(1.0, 1.0, 1.0);
+/* transformación modelo/vista */
+gluLookAt( 0.0, 0.0, 5.0,// punto de vista
+0.0, 0.0, 0.0,// centro del objeto
+0.0, 1.0, 0.0); //orientación de la cámara (vector UP el eje y)
+
+/* Dibujamos una tetera */
+glutWireTeapot(1.0);
+
+/* Vacia el buffer de dibujo */
+glFlush ();
+}
+Es decir, utilizar gluLookAt para definir la transformación modelo / vista, que
+generalmente puede resultar más cómoda.
+Volviendo al código anterior, si quisiéramos visualizar la tetera desde otro ángulo,
+podríamos, por ejemplo, aplicarle una rotación de 90 grados en y:
+/* transformación modelo/vista */
+glLoadIdentity();
+glTranslatef(0.0, 0.0, -5.0);
+glRotatef(90.0.0, 0.0, 1.0, 0.0);
+Hay que tener muy presente el orden en el que las funciones de transformación deben
+ser aplicadas en OpenGL, en este caso en primer lugar rotamos la tetera (la cual está
+centrada en el 0,0,0) 90 grados respecto al (0,0,0) y posteriormente la desplazamos 5
+unidades hacia –z.
+
