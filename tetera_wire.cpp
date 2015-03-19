@@ -15,13 +15,11 @@ void display(void)
     glMatrixMode(GL_MODELVIEW);
     /* color */
     glColor3f(1.0, 1.0, 1.0);
-
     /* transformación modelo/vista */
     glLoadIdentity();
     glTranslatef(0.0, 0.0, -5.0);
     /* Dibujamos una tetera */
     glutWireTeapot(1.0);
-
     /* Vacia el buffer de dibujo */
     glFlush ();
 }
@@ -36,7 +34,6 @@ void reshape(int w, int h)
     far a 20.0 */
     glLoadIdentity();
     gluPerspective(60.0, GLfloat(w) / GLfloat(h), 1.0, 20.0);
-
 }
 int main(int argc, char** argv)
 {
@@ -50,7 +47,6 @@ int main(int argc, char** argv)
     glutInitWindowPosition(100, 100);
 // Abre la ventana con el título indicado
     glutCreateWindow("Dibujando una tetera 3d");
-
 // Inicializar valores
     init();
 // Indica cual es la función de dibujo
@@ -59,5 +55,4 @@ int main(int argc, char** argv)
     glutReshapeFunc(reshape);
 // Comienza el bucle de dibujo y proceso de eventos.
     glutMainLoop();
-
 }
